@@ -1,0 +1,44 @@
+name: Build signed block lists
+
+on:
+  schedule:
+    - cron: '17 2 * * 1'   # weekly, Monday 02:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lists
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: tool/mkgeosite/go.mod
+          cache-dependency-path: tool/mkgeosite/go.sum
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install cryptography==43.0.3
+      - name: Previous manifest (for the size floor)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release download lists -p manifest.json -O prev.json || true
+      - name: Build, check and sign
+        env:
+          LISTS_SIGNING_KEY: ${{ secrets.LISTS_SIGNING_KEY }}
+        run: bash tool/publish.sh out prev.json
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view lists >/dev/null 2>&1 || gh release create lists --title "SafeRoute block lists" --notes "Signed block lists for SafeRoute, rebuilt weekly. The app accepts them only with a valid Ed25519 signature."
+          # List first, then the signed manifest that points to it.
+          gh release upload lists out/saferoute.dat.gz --clobber
+          gh release upload lists out/manifest.json.sig out/manifest.json --clobber

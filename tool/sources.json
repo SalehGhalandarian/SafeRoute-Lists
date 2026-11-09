@@ -1,0 +1,44 @@
+{
+  "adult": [
+    {
+      "name": "oisd nsfw",
+      "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/domainswild2_nsfw.txt",
+      "format": "wildcard",
+      "license": "https://github.com/sjhgvr/oisd/blob/main/LICENSE"
+    },
+    {
+      "name": "hagezi nsfw",
+      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/nsfw-onlydomains.txt",
+      "format": "wildcard",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "StevenBlack sinfonietta porn",
+      "url": "https://raw.githubusercontent.com/StevenBlack/hosts/master/extensions/porn/sinfonietta/hosts",
+      "format": "hosts",
+      "license": "MIT"
+    },
+    {
+      "name": "v2fly category-porn",
+      "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/master/data/category-porn",
+      "format": "v2fly",
+      "license": "MIT"
+    }
+  ],
+  "doh": [
+    {
+      "name": "hagezi doh",
+      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/doh-onlydomains.txt",
+      "format": "wildcard",
+      "license": "GPL-3.0"
+    }
+  ],
+  "bypass": [
+    {
+      "name": "hagezi doh-vpn-proxy-bypass",
+      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/wildcard/doh-vpn-proxy-bypass-onlydomains.txt",
+      "format": "wildcard",
+      "license": "GPL-3.0"
+    }
+  ]
+}

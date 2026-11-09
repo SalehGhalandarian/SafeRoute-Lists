@@ -1,0 +1,62 @@
+# Hand-maintained additions. "domain:" blocks the domain and all subdomains,
+# "keyword:" blocks any domain containing the text. Keywords must not occur
+# inside ordinary words (e.g. no "sex": essex.ac.uk, no "xxx": xxxlutz.de).
+domain:xxx
+domain:porn
+domain:sex
+domain:adult
+domain:sexy
+keyword:porn
+keyword:xvideo
+keyword:xnxx
+keyword:xhamster
+keyword:hentai
+keyword:redtube
+keyword:youporn
+keyword:brazzers
+keyword:onlyfans
+keyword:chaturbate
+keyword:stripchat
+keyword:livejasmin
+keyword:bongacams
+keyword:spankbang
+keyword:rule34
+keyword:nhentai
+# Added 2026-11, each checked against the 1.3M most visited sites (global + Iran):
+# every match was an adult site. Rejected for false hits: erome (aeromexico),
+# erotic (heroticket.ir), nude (anudetails...), memek, jizz, sikis, jable, slut,
+# fetish, fuck, sexy, xxx, sexo, seks, jende (jendela = window, Indonesian).
+keyword:sexcam
+keyword:camsoda
+keyword:myfreecams
+keyword:camwhore
+keyword:bokep
+keyword:ngentot
+keyword:chudai
+keyword:javhd
+keyword:missav
+keyword:supjav
+keyword:sxyprn
+keyword:daftsex
+keyword:noodlemagazine
+keyword:redgifs
+keyword:fapello
+keyword:youjizz
+keyword:tnaflix
+keyword:faphouse
+keyword:sexvid
+keyword:xxxvideo
+keyword:phimsex
+keyword:sexchat
+keyword:nsfw
+keyword:milfs
+keyword:whore
+keyword:bdsm
+keyword:lucah
+keyword:sikisme
+keyword:iransex
+keyword:persiansex
+keyword:sexirani
+keyword:dastanesex
+keyword:jendekh
+keyword:jendeh

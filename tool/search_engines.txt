@@ -1,0 +1,29 @@
+# Search engines whose safe mode cannot be enforced by DNS: blocked so that
+# searches go to Google / Bing / DuckDuckGo / YouTube, where it is enforced.
+domain:search.brave.com
+domain:startpage.com
+domain:qwant.com
+domain:search.yahoo.com
+domain:presearch.com
+domain:mojeek.com
+domain:you.com
+domain:metager.org
+domain:searx.be
+# Added 2026-11: more engines without an enforceable safe mode, and the
+# DuckDuckGo / Bing front ends that the safe-mode DNS rewrite does not cover.
+domain:ecosia.org
+domain:search.aol.com
+domain:ask.com
+domain:baidu.com
+domain:search.naver.com
+domain:search.yahoo.co.jp
+domain:petalsearch.com
+domain:search.seznam.cz
+domain:sogou.com
+domain:so.com
+domain:yep.com
+domain:kagi.com
+domain:search.lilo.org
+domain:html.duckduckgo.com
+domain:lite.duckduckgo.com
+domain:cn.bing.com
