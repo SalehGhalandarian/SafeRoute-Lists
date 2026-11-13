@@ -1,0 +1,27 @@
+name: Iran IP ranges
+
+on:
+  schedule:
+    - cron: '41 3 * * 1'   # weekly, Monday
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ranges:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: mkdir -p iran && python3 tool/iran/ranges.py iran/ir_cidr.txt
+      - name: Commit when changed
+        run: |
+          git config user.name "SafeRoute list bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add iran/ir_cidr.txt
+          git commit -m "Iran IP ranges updated" || exit 0
+          git push
