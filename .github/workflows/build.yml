@@ -46,3 +46,17 @@ jobs:
           # List first, then the signed manifest that points to it.
           gh release upload lists out/saferoute.dat.gz --clobber
           gh release upload lists out/manifest.json.sig out/manifest.json --clobber
+      # GitHub switches off scheduled workflows of a public repository after
+      # 60 days without activity. Each weekly build records what it published,
+      # so the schedule never lapses on its own. (A push made with the
+      # workflow token starts no other workflow, so this cannot loop.)
+      - name: Keep the weekly schedule alive
+        run: |
+          mkdir -p status
+          v=$(python3 -c "import json; print(json.load(open('out/manifest.json'))['version'])")
+          printf 'Last published list: %s\nBuilt: %s UTC\n' "$v" "$(date -u '+%Y-%m-%d %H:%M')" > status/LAST_BUILD.txt
+          git config user.name "SafeRoute list bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add status/LAST_BUILD.txt
+          git commit -m "Lists $v published" || exit 0
+          git push
