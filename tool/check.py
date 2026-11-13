@@ -59,8 +59,12 @@ for c, (wild, exact, kw) in cats.items():
         errors.append(f'{c}: only {n} entries (floor {FLOOR[c]})')
     if c in prev:
         before = prev[c]['domains'] + prev[c]['exact']
-        if n < 0.8 * before:
-            errors.append(f'{c}: shrank from {before} to {n} (more than 20 %)')
+        # The app refuses any list more than 3 % below the largest it has
+        # accepted, and any loss of keywords: never publish one it would refuse.
+        if n < 0.97 * before:
+            errors.append(f'{c}: shrank from {before} to {n} (more than 3 %)')
+        if len(kw) < prev[c].get('keywords', 0):
+            errors.append(f"{c}: keywords dropped from {prev[c]['keywords']} to {len(kw)}")
     print(f'{c}: {n} entries, {len(kw)} keywords')
 
 if errors:
